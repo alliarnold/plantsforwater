@@ -1,22 +1,40 @@
 header, body {
   margin: 5%;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Karla', sans-serif;
+  font-weight: 100;
+  background-color: #f2efe8;
 }
 
+/*
+font-family: 'Karla', sans-serif;
+font-family: 'Quicksand', sans-serif;
+font-family: 'Sacramento', cursive;
+*/
+
 h1 {
-  font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+  font-family: 'Quicksand SemiBold', sans-serif;
+  font-weight: 500;
+  font-size: 5.5vh;
+  color:#072b18;
   /* font-family: 'Roboto Mono', monospace; */
   /* see HTML call to fonts.google.com and try swapping fonts between "Gill Sans" and "Roboto Mono" here and also try typing over font name to replace 'Roboto Mono' with: 'Permanent Marker' */
 }
 
 h2 {
-  font-family: 'Comfortaa', cursive;
+  font-family: 'Sacramento', cursive;
+  font-weight: 100;
+  font-size: 4.5vh;
+  text-indent: 5%;
+  color: #226F2B;
 }
 
 .section {
-  background-color: aliceblue;
   margin: 5%;
   height: auto;
+}
+
+.section#four {
+  background-color: #f0f8ff;
 }
 
 .section#one {
