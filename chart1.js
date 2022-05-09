@@ -1,9 +1,5 @@
-// at VERY TOP wrap entire code in an export function
-// don't forget the close-curly-bracket at the VERY bottom of all the code
 
 export function chart1() {
-
-
 
   /**
    * CONSTANTS AND GLOBALS
@@ -18,13 +14,18 @@ export function chart1() {
     data: null
   };
 
-  /**
-   * LOAD DATA
-   * Using a Promise.all([]), we can load more than one dataset at a time
-   * */
+  // LOAD DATA
+ 
   Promise.all([
-    d3.csv("./data/data1.csv"), 
-  ]).then(([data]) => {
+    d3.csv("./data/NYC-Water-Consumption.csv", d => {
+      // use custom initializer to reformat the data the way we want it
+      return {
+        Year: new Date(+d.Year),
+        NYCPop: ,
+        NYCConsumption,
+        NYCperPerson
+      }})
+    ]).then(([data]) => {
     state.data = data;
     console.log("state: ", state);
     init();
@@ -36,9 +37,63 @@ export function chart1() {
    * */
   function init() {
 
-    svg = d3
-      .select("#d3-container-2")
+    // scales
+    
+    const xScale = d3.scaleLinear()
+      .domain([0, d3.extent(data, d => d.Year)])
+      .range([margin.left, width - margin.right])
+      
+    const yScale = d3.scaleLinear()
+      .domain([0, d3.max(data, d => d.NYCConsumption)])
+      .range([height - margin.bottom, margin.top])
+
+    const colorScale = d3.scaleOrdinal()
+      .domain(["NYCConsumption", "NYCperPErson"])
+      .range(["cadetblue", "#8F4845"])
+
+    const svg = d3.select("#d3-container-2")
       .append("svg")
+
+    const xAxis = d3.axisBottom(xScale)
+
+    const xAxisGroup = svg.append("g")
+            .attr("class", "xAxis")
+            .attr("transform", `translate(${0}, ${height - margin.bottom})`)
+            .call(xAxis)
+
+          xAxisGroup.append("text")
+            .attr("class", 'xLabel')
+            .attr("transform", `translate(${width / 2}, ${35})`)
+            .text("Year")
+
+    const yAxis = d3.axisLeft(yScale)
+
+    const yAxisGroup = svg.append("g")
+            .attr("class", "yAxis")
+            .attr("transform", `translate(${margin.right}, ${0})`)
+            .call(yAxis)
+        
+          yAxisGroup.append("text")
+            .attr("class", 'yLabel')
+            .attr("transform", `translate(${-45}, ${height / 2})`)
+            .attr("writing-mode", 'vertical-rl')
+            .text("NYC Water Consumption - per million gallons, per day")
+
+    // generate line
+
+    const lineGen = d3.line()
+      .x(d => xScale(d.Year))
+      .y(d => yScale(d.population))
+
+    // draw line
+
+    svg.selectAll(".line")
+      .data([data])
+      .join("path")
+      .attr("class", 'line')
+      .attr("fill", "none")
+      .attr("stroke", colorScale(d.NYCConsumption))
+      .attr("d", d => lineGen(d))
 
     draw(); // calls the draw function
   }
@@ -47,17 +102,17 @@ export function chart1() {
    * DRAW FUNCTION
    * we call this everytime there is an update to the data/state
    * */
-  function draw() {
+  // function draw() {
 
-    svg.style('background-color', 'cadetblue')
+  //   svg.style('background-color', 'cadetblue')
 
-    svg.selectAll('text')
-      .data(state.data)
-      .join('text')
-      .attr('dx', '50%')
-      .attr('dy', '50%')
-      .style('text-anchor', 'middle')
-      .text(d => `hello I am SVG number ${d.data}`)
+  //   svg.selectAll('text')
+  //     .data(state.data)
+  //     .join('text')
+  //     .attr('dx', '50%')
+  //     .attr('dy', '50%')
+  //     .style('text-anchor', 'middle')
+  //     .text(d => `hello I am SVG number ${d.data}`)
 
   }
 // if you are copying code over from an existing chart project
