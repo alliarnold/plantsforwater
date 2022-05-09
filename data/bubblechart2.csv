@@ -1,0 +1,9 @@
+countType,species,count,color,yAxisLabel
+kgNitrogen,Clams,107,#EB9928,kgs nitrogen per hectare per year
+kgNitrogen,Oysters,581,#2F4858,kgs nitrogen per hectare per year
+kgNitrogen,Mussels,314,#99E8DA,kgs nitrogen per hectare per year
+kgNitrogen,Seaweeds,275,#8F4845,kgs nitrogen per hectare per year
+usdBen,Clams,3452,#EB9928,total USD value per hectare per year
+usdBen,Oysters,18756,#2F4858,total USD value per hectare per year
+usdBen,Mussels,10147,#99E8DA,total USD value per hectare per year
+usdBen,Seaweeds,8889,#8F4845,total USD value per hectare per year
