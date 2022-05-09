@@ -1,0 +1,30 @@
+[ {"children": [
+ {
+   "species": "clams",
+   "kgN-per-ha-yr": 107,
+   "USD-per-ha-per-yr": 3452,
+   "color": "#EB9928",
+   "tooltip": "*removes nitrogen, phosphates"
+ },
+ {
+   "species": "oysters",
+   "kgN-per-ha-yr": 581,
+   "USD-per-ha-per-yr": 18756,
+   "color": "#2F4858",
+   "tooltip": "*removes nitrogen, phosphates"
+ },
+ {
+   "species": "mussels",
+   "kgN-per-ha-yr": 314,
+   "USD-per-ha-per-yr": 10147,
+   "color": "#99E8DA",
+   "tooltip": "*removes nitrogen, phosphate, potential trap for microplastics, can grow more densely than oysters"
+ },
+ {
+   "species": "seaweed",
+   "kgN-per-ha-yr": 275,
+   "USD-per-ha-per-yr": 8889,
+   "color": "#8F4845",
+   "tooltip": "*removes nitrogen, phosphates, and C02; creates oxgyen"
+ }]}
+]

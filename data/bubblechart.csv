@@ -1,0 +1,5 @@
+species,kgNitrogen,usdBenefit,color,tooltip
+Clams,107,3452,#EB9928,"*removes nitrogen, phosphates"
+Oysters,581,18756,#2F4858,"*removes nitrogen, phosphates"
+Mussels,314,10147,#99E8DA,"*removes nitrogen, phosphate, potential trap for microplastics, can grow more densely than oysters"
+Seaweeds,275,8889,#8F4845,"*removes nitrogen, phosphates, and C02; creates oxgyen"

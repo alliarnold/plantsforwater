@@ -2,6 +2,9 @@
 // don't forget the close-curly-bracket at the VERY bottom of all the code
 
 export function chart1() {
+
+
+
   /**
    * CONSTANTS AND GLOBALS
    * */
@@ -34,7 +37,7 @@ export function chart1() {
   function init() {
 
     svg = d3
-      .select("#d3-container-1")
+      .select("#d3-container-2")
       .append("svg")
 
     draw(); // calls the draw function
