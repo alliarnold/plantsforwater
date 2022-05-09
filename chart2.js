@@ -16,7 +16,6 @@ const svg = d3.select("#d3-container-1")
   
 // load data
 
-d3.csv()
 d3.csv("./data/bubblechart.csv", d3.autoType)
 .then(data => {
   console.log(data)

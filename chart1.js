@@ -1,46 +1,39 @@
 
 export function chart1() {
 
-  /**
-   * CONSTANTS AND GLOBALS
-   * */
+  // CONSTANTS AND GLOBALS
   const margin = { top: 20, bottom: 50, left: 60, right: 40 };
+  
   let svg;
 
-  /**
-   * APPLICATION STATE
-   * */
-  let state = {
-    data: null
-  };
+  // APPLICATION STATE
+  
+  // let state = {
+  //   data: null
+  // };
 
   // LOAD DATA
- 
-  Promise.all([
-    d3.csv("./data/NYC-Water-Consumption.csv", d => {
+  
+  d3.csv("./data/NYC-Water-Consumption.csv", d => {
       // use custom initializer to reformat the data the way we want it
       return {
         Year: new Date(+d.Year),
-        NYCPop: ,
-        NYCConsumption,
-        NYCperPerson
-      }})
-    ]).then(([data]) => {
-    state.data = data;
-    console.log("state: ", state);
-    init();
-  });
+        NYCPop: d.NYCPop,
+        NYCConsumption: d.NYCConsumption,
+        NYCperPerson: d.NYCperPerson
+      }}).then(raw_data => {
+        console.log("data", raw_data);
+        init();
+      });  
+  // INITIALIZING FUNCTION
+  //this will be run *one time* when the data finishes loading in
 
-  /**
-   * INITIALIZING FUNCTION
-   * this will be run *one time* when the data finishes loading in
-   * */
   function init() {
 
-    // scales
+  // SCALES
     
-    const xScale = d3.scaleLinear()
-      .domain([0, d3.extent(data, d => d.Year)])
+    const xScale = d3.scaleTime()
+      .domain(d3.extent(data, d => d.Year))
       .range([margin.left, width - margin.right])
       
     const yScale = d3.scaleLinear()
@@ -51,8 +44,12 @@ export function chart1() {
       .domain(["NYCConsumption", "NYCperPErson"])
       .range(["cadetblue", "#8F4845"])
 
+  // CREATE SVG
+
     const svg = d3.select("#d3-container-2")
       .append("svg")
+
+  // BUILD AND CALL AXISES
 
     const xAxis = d3.axisBottom(xScale)
 
