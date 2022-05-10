@@ -50,7 +50,7 @@ function init() {
     .domain(["Clams", "Mussels", "Oysters", "Seaweeds"])
     .range(["#EB9928","#2F4858", "#815f8a", "#8F4845"])
 
-const container = d3.select("#d3-container-3").style("position", "relative")
+const container = d3.select("#d3-container-2").style("position", "relative")
 
     svg = container
         .append("svg")
@@ -60,9 +60,9 @@ const container = d3.select("#d3-container-3").style("position", "relative")
         
 // tooltip 
 
-    tooltip = d3.select("#four")
+    tooltip = d3.select("#two")
         .append("div")
-        .attr("class", "tooltip")
+        .attr("class", "tooltip-bar")
         .style("position", "absolute")
         .style("z-index", "10")
         .style("visibility", "hidden")
@@ -93,17 +93,8 @@ svg.append("text")
   .attr("class", "x label")
   .attr("text-anchor", "middle")
   .attr("x", width/2)
-  .attr("y", height - 10)
+  .attr("y", height - 13)
   .text("species");
-
-// svg.append("text")
-//   .attr("class", "y label")
-//   .attr("text-anchor", "middle")
-//   .attr("x", -(height/2))
-//   .attr("y", 10)
-//   .attr("dy", ".75em")
-//   .attr("transform", "rotate(-90)")
-//   .text(`${d.yAxisLabel}`);
 
 draw(); // calls the draw function
 
@@ -150,7 +141,7 @@ function draw() {
         .attr("fill", d=> colorScale(d.species))
         .on("mouseover", function(d,i){
             tooltip
-                .html(`<div>${d.species}</div><div>Benefit: ${d.count}</div>`)
+                .html(`${d.species} ${d.displayCount}`)
                 .style("visibility", "visible")
                 .style("opacity", .8)
                 .style("background", tipColor)
@@ -159,15 +150,16 @@ function draw() {
                     .transition()
                     .attr("fill", hoverColor)
         })
-        .on("mousemove", function(){
-            d3.select(".tooltip")
+        .on("mousemove", function(event){
+            d3.select(".tooltip-bar")
             .style("top", d3.event.pageY - 10 + "px")
             .style("left", d3.event.pageX + 10 + "px");
         })
         .on("mouseout", function (d){
             tooltip
                 .html(``)
-                .style("visiblity", "hidden");
+                .style("visiblity", "hidden")
+                .style("opacity", 0);
                 d3.select(this)
                     .transition()
                     .attr("fill", d=> colorScale(d.species))

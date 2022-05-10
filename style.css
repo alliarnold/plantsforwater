@@ -56,10 +56,6 @@ h2 {
   height: auto;
 }
 
-.section#four {
-  background-color: #f0f8ff;
-}
-
 .section#one {
   display: grid;
   grid-column-gap: 10px;
@@ -77,17 +73,28 @@ h2 {
   background-image: linear-gradient(190deg, #bce0e0, #99E8DA, #b09f53);
 }
 
+.section#one > #caption {
+  height: auto;
+  grid-column: 3 / 4;
+  background-color: white;
+}
+
 .section#two {
+  background-color: #f0f8ff;
+}
+
+
+.section#three {
   display: grid;
   grid-column-gap: 10px;
   grid-template-columns: 40% 60%;
 }
 
-.section#two > .text {
+.section#three > .text {
   grid-column: 2 / 3;
 }
 
-.section#two > .graph {
+.section#three > .graph {
   grid-column: 0 / 2; 
   grid-row: 1;
 }
@@ -120,22 +127,4 @@ svg {
   width: 100%;
   height: 100%;
   min-height: 100px;
-}
-
-@keyframes bounce {
-	0%, 100%, 20%, 50%, 80% {
-		-webkit-transform: translateY(0);
-		-ms-transform:     translateY(0);
-		transform:         translateY(0)
-	}
-	40% {
-		-webkit-transform: translateY(-30px);
-		-ms-transform:     translateY(-30px);
-		transform:         translateY(-30px)
-	}
-	60% {
-		-webkit-transform: translateY(-15px);
-		-ms-transform:     translateY(-15px);
-		transform:         translateY(-15px)
-	}
 }

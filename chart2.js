@@ -34,10 +34,10 @@ const size = d3.scaleLinear()
 
 // tooltip
 
-const  tooltip = d3.select("#d3-container-1")
+const  tooltipCircle = d3.select("#d3-container-1")
   .append("div")
   .style("opacity", 0)
-  .attr("class", "tooltip")
+  .attr("class", "tooltip-circle")
   .style("background-color", "#d3f5bc")
   .style("color", "#581845")
   .style("border-radius", "6px")
@@ -63,7 +63,7 @@ let node = svg.append("g")
         .style("stroke", "white")
         .style("stroke-width", 4);
 
-      tooltip
+      tooltipCircle
         .html(`${d.species} remove ${d.kgNitrogen} kg of nitrogen per hectare per year`)
         .style("visibility", "visible")
         .style("opacity", .8)
@@ -71,16 +71,18 @@ let node = svg.append("g")
     })
     // here "event" is not yet needed in parameter
     // .on('mousemove', function (event) {
-    .on('mousemove', function () {
+    .on('mousemove', function (event) {
 
       // change to a d3.select of tooltip
-      d3.select(".tooltip")
+      d3.select(".tooltip-circle")
       // change positioning to d3.event reference
-      .style('top', d3.select(this).attr("cy") + "px" /*d3.event.y - 10 + 'px'*/)
-      .style('left', d3.select(this).attr("cx") + "px" /*d3.event.x + 10 + 'px'*/);
+      .style("top", d3.event.y - 10 + "px")
+      .style("left", d3.event.x + 10 + "px");
+      //.style('top', d3.select(this).attr("cy") + "px")
+      //.style('left', d3.select(this).attr("cx") + "px");
   })
     .on("mouseleave", function () 
-    { tooltip
+    { tooltipCircle
       .style("opacity", 0)
       d3.select(this)
       .style("stroke", "none")
