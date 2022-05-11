@@ -2,7 +2,7 @@
 export function chart3() {
   
 const width = window.innerWidth * .8,
-height = window.innerHeight * .5,
+height = window.innerHeight * .8,
 margin = { top: 10, bottom: 40, left: 40, right: 20};
 
 const hoverColor = "#2610eb";
@@ -128,7 +128,7 @@ function draw() {
 
     const filteredData = state.data
     .filter(d => 
-        state.selection === "usdBen" || state.selection === d.countType)
+        state.selection === "usdBen" /*|| state.selection === d.countType*/)
         console.log(filteredData)
     
     svg.selectAll("rect")

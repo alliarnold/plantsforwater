@@ -5,8 +5,8 @@ export function chart2() {
 
 // const margin = { top: 30, bottom: 30, left: 40, right: 40 };
 
-const width = 250
-const height = 250
+const width = window.innerWidth * .25
+const height = window.innerHeight * .3
 const margin = {top: 5, bottom: 5, left: 5, right: 5};
 
 // append
@@ -28,16 +28,17 @@ const colorScale = d3.scaleOrdinal()
 
 // scale size
 
-const size = d3.scaleLinear()
+const size = d3.scaleSqrt()
   .domain([0, d3.max(data, d => d.kgNitrogen)])
   .range([7, 65])
 
 // tooltip
 
-const  tooltipCircle = d3.select("#d3-container-1")
+const  tooltipCircle = d3.select("#one")
   .append("div")
   .style("opacity", 0)
   .attr("class", "tooltip-circle")
+  .style("position", "absolute")
   .style("background-color", "#d3f5bc")
   .style("color", "#581845")
   .style("border-radius", "6px")
@@ -54,14 +55,11 @@ let node = svg.append("g")
     .attr("cx", width/2)
     .attr("cy", height/2)
     .style("fill", d => colorScale(d.species))
-    //.attr("stroke", "white")
-    //.style("stroke-width", .5)
 // three functions that changes tooltip when user hovers
     .on("mouseover", function(d,i){
-
       d3.select(this)
         .style("stroke", "white")
-        .style("stroke-width", 4);
+        .style("stroke-width", 4)
 
       tooltipCircle
         .html(`${d.species} remove ${d.kgNitrogen} kg of nitrogen per hectare per year`)
@@ -89,18 +87,12 @@ let node = svg.append("g")
       .transition()
         .duration(3000)
         .transition()
-        .ease(d3.easeBounce)
+        .ease("bounce")
     })
     .call(d3.drag() // call specific function when circle is dragged
       .on("start", dragstarted)
       .on("drag", dragged)
       .on("end", dragended));
-
-  // svg.append("text")
-  //     .attr()
-  //     .attr()
-  //     .attr("class", "node")
-  //     .text(function(d) { return d.species});
 
 // features of the forces applied to the nodes:
 
