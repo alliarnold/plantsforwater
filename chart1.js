@@ -57,10 +57,10 @@ yScale = d3.scaleLinear()
 // axes
 
 xAxis = d3.axisBottom(xScale)
-  .ticks(8)
+  .ticks(5)
 
 yAxis = d3.axisLeft(yScale)
-  .ticks(8)
+  .ticks(5)
 
 // interactive element set-up
 
