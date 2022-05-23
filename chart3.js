@@ -2,7 +2,7 @@
 export function chart3() {
   
 const width = window.innerWidth * .8,
-height = window.innerHeight * .8,
+height = window.innerHeight * .6,
 margin = { top: 15, bottom: 15, left: 58, right: 20};
 
 const hoverColor = "#2610eb";
