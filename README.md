@@ -40,6 +40,8 @@ URL: https://github.com/alliarnold/plantsforwater/blob/main/images/sketch.png
 
 From that hopeful stage, my design process ended up shrinking towards where the data and my javascript skills allowed. I do hope to had more "oceanic" animations to my designs going forward - including things like making the circles in my nitrogen chart float/bounce like they are in water.
 
+I ultimately focused more so on what I could best control with my skill level - the aesthetics of the visual language, things like referencing the sea and the materials in the pallet. For example, the background for my circle chart shows a gradient that reflects water gradually becoming clean as the nitrogren removal increases with the different species.
+
 2. Things inspired me during the design development workshop:
 
 URL: https://github.com/alliarnold/plantsforwater/blob/main/images/palette1.png

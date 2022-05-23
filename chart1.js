@@ -27,7 +27,7 @@ let state = {
 
 // load data and format years
 
-d3.csv('../data/NYC-Water-Consumption2.csv', d => {
+d3.csv('data/NYC-Water-Consumption.csv', d => {
   return {
     year: new Date(+d.year, 0,1),
     nycPop:(d.nycPop),
