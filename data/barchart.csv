@@ -1,9 +1,9 @@
 countType,species,count,color,displayCount
-kgNitrogen,clams,107,"#EB9928",capture 107 kgs of nitrogen per hectare per year
-kgNitrogen,oysters,581,#2F4858,capture 581 kgs of nitrogen per hectare per year
-kgNitrogen,mussels,314,#99E8DA,capture 314 kgs of nitrogen per hectare per year
-kgNitrogen,seaweeds,275,#8F4845,capture 247 kgs nitrogen per hectare per year
-usdBen,clams,3452,"#EB9928",are worth $3452 USD per hectare per year
-usdBen,oysters,18756,#2F4858,are worth $18756 USD per hectare per year
-usdBen,mussels,10147,#99E8DA,are worth $10147 USD per hectare per year
-usdBen,seaweeds,8889,#8F4845,are worth $8889 USD per hectare per year
+kgNitrogen,clams,107,"#EB9928",capture 107 kgs of nitrogen per acre per year
+kgNitrogen,oysters,581,#2F4858,capture 581 kgs of nitrogen per acre per year
+kgNitrogen,mussels,314,#99E8DA,capture 314 kgs of nitrogen per acre per year
+kgNitrogen,seaweeds,275,#8F4845,capture 247 kgs nitrogen per acre per year
+usdBen,clams,3452,"#EB9928",are worth $3452 USD per acre per year
+usdBen,oysters,18756,#2F4858,are worth $18756 USD per acre per year
+usdBen,mussels,10147,#99E8DA,are worth $10147 USD per acre per year
+usdBen,seaweeds,8889,#8F4845,are worth $8889 USD per acre per year
