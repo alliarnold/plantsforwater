@@ -3,7 +3,7 @@ export function chart3() {
   
 const width = window.innerWidth * .8,
 height = window.innerHeight * .8,
-margin = { top: 10, bottom: 40, left: 40, right: 20};
+margin = { top: 15, bottom: 15, left: 58, right: 20};
 
 const hoverColor = "#2610eb";
 const tipColor = "#d3f5bc";
@@ -19,11 +19,14 @@ let state = {
 
 /* LOAD DATA */
 
-d3.csv('data/bubblechart2.csv', d3.autoType)
+d3.csv('data/barchart.csv', d3.autoType)
 .then(raw_data => {
   console.log("data", raw_data);
   // save our data to application state
   state.data = raw_data;
+  state.data.sort(function(a,b) {
+    return b.count - a.count;
+  });
   init();
 });
 
@@ -47,10 +50,10 @@ function init() {
     .range([height-margin.bottom, margin.top])
     
   colorScale = d3.scaleOrdinal()
-    .domain(["Clams", "Mussels", "Oysters", "Seaweeds"])
-    .range(["#EB9928","#2F4858", "#815f8a", "#8F4845"])
+    .domain(d3.map(state.data, d => d.species))
+    .range(["#2F4858","#815f8a", "#8F4845", "#EB9928"])
 
-const container = d3.select("#d3-container-2").style("position", "relative")
+const container = d3.select("#d3-container-3").style("position", "relative")
 
     svg = container
         .append("svg")
@@ -60,24 +63,24 @@ const container = d3.select("#d3-container-2").style("position", "relative")
         
 // tooltip 
 
-    tooltip = d3.select("#two")
+    tooltip = d3.select("#three")
         .append("div")
         .attr("class", "tooltip-bar")
         .style("position", "absolute")
         .style("z-index", "10")
         .style("visibility", "hidden")
         .style("opacity", 0.8)
-        .style("padding", "8px")
-        //.style("background", tipColor)
+        .style("background-color", "#d3f5bc")
+        .style("color", "#581845")
         .style("border-radius", "4px")
-        //.style("color", "blue")
-        .style("font-size", "1.2em" )
+        .style("padding", "5px")
         .text("tooltip");
 
 // axises
 
   const xAxis = d3.axisBottom(xScale);
-  const yAxis = d3.axisLeft(yScale);
+  const yAxis = d3.axisLeft(yScale)
+    .ticks(5);
 
   const xAxisGroup = svg.append("g")
   .attr("class", 'xAxis')
@@ -93,8 +96,18 @@ svg.append("text")
   .attr("class", "x label")
   .attr("text-anchor", "middle")
   .attr("x", width/2)
-  .attr("y", height - 13)
+  .attr("y", height + 12)
+  .attr("font-size", 11)
   .text("species");
+
+svg.append("text")
+  .attr("class", "y label")
+  .attr("text-anchor", "middle")
+  .attr("writing-mode", "vertical-rl")
+  .attr("x", 7)
+  .attr("y", (height+45)/2)
+  .attr("font-size", 11)
+  .text("$USD");
 
 draw(); // calls the draw function
 
@@ -140,20 +153,23 @@ function draw() {
         .attr("y", d=> yScale(d.count))
         .attr("fill", d=> colorScale(d.species))
         .on("mouseover", function(d,i){
-            tooltip
-                .html(`${d.species} ${d.displayCount}`)
-                .style("visibility", "visible")
-                .style("opacity", .8)
-                .style("background", tipColor)
-                .style("color", "#581845")
                 d3.select(this)
                     .transition()
-                    .attr("fill", hoverColor)
+                    .duration(150)
+                    .attr("stroke", "#581845")
+                    .attr("stroke-width", 4);
+          
+                tooltip
+                  .html(`${d.species} ${d.displayCount}`)
+                  .style("visibility", "visible")
+                  .style("opacity", .8)
+                  //.style("background", tipColor)
+                  //.style("color", "#581845");
         })
         .on("mousemove", function(event){
             d3.select(".tooltip-bar")
-            .style("top", d3.event.pageY - 10 + "px")
-            .style("left", d3.event.pageX + 10 + "px");
+            .style("top", d3.event.pageY + "px")
+            .style("left", d3.event.pageX + "px");
         })
         .on("mouseout", function (d){
             tooltip
@@ -162,7 +178,8 @@ function draw() {
                 .style("opacity", 0);
                 d3.select(this)
                     .transition()
-                    .attr("fill", d=> colorScale(d.species))
+                    .duration(150)
+                    .attr("stroke", "none")
         });
 };
 

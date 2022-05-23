@@ -2,53 +2,30 @@ header, body {
   margin: 5%;
   font-family: 'Karla', sans-serif;
   font-weight: 100;
-  background-color: #f2efe8;
+  background-color: #dafff8d7;
 }
 
-/*
-font-family: 'Karla', sans-serif;
-font-family: 'Quicksand', sans-serif;
-font-family: 'Sacramento', cursive;
-*/
+header {
+  display:grid;
+  grid-template-columns: 65% 35%;
+  margin-bottom: 0%;
+}
 
 h1 {
   font-family: 'Quicksand SemiBold', sans-serif;
   font-weight: 500;
   font-size: 5.5vh;
   color:#072b18;
-  /* font-family: 'Roboto Mono', monospace; */
-  /* see HTML call to fonts.google.com and try swapping fonts between "Gill Sans" and "Roboto Mono" here and also try typing over font name to replace 'Roboto Mono' with: 'Permanent Marker' */
+  grid-column: 1/2;
 }
 
 h2 {
   font-family: 'Sacramento', cursive;
   font-weight: 100;
   font-size: 4.5vh;
-  text-indent: 5%;
   color: #226F2B;
-}
-
-.text span:hover
-{
-  position: relative;
-  display: inline-block;
-  animation: animate 3 ease-in-out infinite;
-}
-
-@keyframes animate
-{
-  0%
-  {
-    transform: translateY(0px);
-  }
-  25%
-  {
-    transform: translateY(-100px)
-  }
-  50%, 100%
-  {
-    transform:translateY(70px)
-  }
+  grid-column: 2/2;
+  text-align: right;
 }
 
 .section {
@@ -59,47 +36,39 @@ h2 {
 .section#one {
   display: grid;
   grid-column-gap: 10px;
-  grid-template-columns: 25% 25% 50%
+  grid-template-columns: 60% 40%;
 }
 
 .section#one > .text {
-  height: auto;
-  grid-column: 1 / 3;
+  grid-column: 1 / 2;
+  grid-row: 1 / span 2;
 }
+
 
 .section#one > .graph {
-  height: auto;
-  grid-column: 3 / 4;
-  background-image: linear-gradient(190deg, #bce0e0, #99E8DA, #b09f53);
-}
-
-.section#one > #caption {
-  height: auto;
-  grid-column: 3 / 4;
-  background-color: white;
-}
-
-.section#two {
+  grid-column: 2 / 2; 
   background-color: #f0f8ff;
 }
+.section#one> #caption2 {
+  grid-column: 2/2;
+  background-color: #f2efe8;}
 
-
-.section#three {
-  display: grid;
-  grid-column-gap: 10px;
-  grid-template-columns: 40% 60%;
+.section#two > .graph {
+  background-image: radial-gradient(ellipse farthest-corner at -10% 90%, #b09f53, #99E8DA, #bce0e0, #dafff8d7);
 }
 
-.section#three > .text {
-  grid-column: 2 / 3;
+.section#two > #caption1 {
+  background-color: #f2efe8;
 }
 
 .section#three > .graph {
-  grid-column: 0 / 2; 
-  grid-row: 1;
+  background-color: #f0f8ff;
 }
 
-
+.section#three > #caption3 {
+  height: auto;
+  background-color: #f2efe8;
+}
 
 /* credits table */
 
@@ -113,7 +82,7 @@ table {
   width:50%;
   border-collapse: collapse;
   border: 3px solid rgb(187, 184, 184);
-  background-color: rgb(231, 229, 229);
+  background-color: rgb(242, 239, 232);
   font-family: 'Roboto Mono', monospace;
   font-size: .8em; 
 }
